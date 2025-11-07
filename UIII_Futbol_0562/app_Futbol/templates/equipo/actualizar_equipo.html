@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h2>Actualizar Equipo: {{ equipo.nombre }}</h2>
+        <form method="POST" action="{% url 'realizar_actualizacion_equipo' equipo.id %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" value="{{ equipo.nombre }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ciudad</label>
+                <input type="text" class="form-control" name="ciudad" value="{{ equipo.ciudad }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">País</label>
+                <input type="text" class="form-control" name="pais" value="{{ equipo.pais }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fundación</label>
+                <input type="date" class="form-control" name="fundacion" value="{{ equipo.fundacion|date:'Y-m-d' }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Estadio</label>
+                <input type="text" class="form-control" name="estadio" value="{{ equipo.estadio }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Entrenador</label>
+                <input type="text" class="form-control" name="entrenador" value="{{ equipo.entrenador }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Colores</label>
+                <input type="text" class="form-control" name="colores" value="{{ equipo.colores }}" required>
+            </div>
+            <button type="submit" class="btn btn-warning">Actualizar Equipo</button>
+            <a href="{% url 'ver_equipos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

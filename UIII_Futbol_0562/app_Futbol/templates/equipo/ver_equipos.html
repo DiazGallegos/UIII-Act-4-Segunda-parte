@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Equipos</h2>
+<a href="{% url 'agregar_equipo' %}" class="btn btn-primary mb-3">➕ Agregar Nuevo Equipo</a>
+
+{% if equipos %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>País</th>
+            <th>Estadio</th>
+            <th>Entrenador</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for equipo in equipos %}
+        <tr>
+            <td>{{ equipo.nombre }}</td>
+            <td>{{ equipo.ciudad }}</td>
+            <td>{{ equipo.pais }}</td>
+            <td>{{ equipo.estadio }}</td>
+            <td>{{ equipo.entrenador }}</td>
+            <td>
+                <a href="{% url 'actualizar_equipo' equipo.id %}" class="btn btn-warning btn-sm">✏️ Editar</a>
+                <a href="{% url 'borrar_equipo' equipo.id %}" class="btn btn-danger btn-sm">🗑️ Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">
+    No hay equipos registrados. <a href="{% url 'agregar_equipo' %}">Agregar el primer equipo</a>
+</div>
+{% endif %}
+{% endblock %}

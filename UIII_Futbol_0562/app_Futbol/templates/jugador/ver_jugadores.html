@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Lista de Jugadores</h2>
+<a href="{% url 'agregar_jugador' %}" class="btn btn-primary mb-3">➕ Agregar Nuevo Jugador</a>
+
+{% if jugadores %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Posición</th>
+            <th>Número</th>
+            <th>Nacionalidad</th>
+            <th>Equipo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for jugador in jugadores %}
+        <tr>
+            <td>{{ jugador.nombre }}</td>
+            <td>{{ jugador.apellido }}</td>
+            <td>
+                {% if jugador.posicion == 'POR' %}Portero
+                {% elif jugador.posicion == 'DEF' %}Defensa
+                {% elif jugador.posicion == 'MED' %}Mediocampista
+                {% elif jugador.posicion == 'DEL' %}Delantero
+                {% endif %}
+            </td>
+            <td>{{ jugador.numero_camiseta }}</td>
+            <td>{{ jugador.nacionalidad }}</td>
+            <td>{{ jugador.equipo.nombre }}</td>
+            <td>
+                <a href="{% url 'actualizar_jugador' jugador.id %}" class="btn btn-warning btn-sm">✏️ Editar</a>
+                <a href="{% url 'borrar_jugador' jugador.id %}" class="btn btn-danger btn-sm">🗑️ Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">
+    No hay jugadores registrados. <a href="{% url 'agregar_jugador' %}">Agregar el primer jugador</a>
+</div>
+{% endif %}
+{% endblock %}

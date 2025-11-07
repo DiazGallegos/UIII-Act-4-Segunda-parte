@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <h2>Agregar Nuevo Equipo</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ciudad</label>
+                <input type="text" class="form-control" name="ciudad" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">País</label>
+                <input type="text" class="form-control" name="pais" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fundación</label>
+                <input type="date" class="form-control" name="fundacion" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Estadio</label>
+                <input type="text" class="form-control" name="estadio" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Entrenador</label>
+                <input type="text" class="form-control" name="entrenador" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Colores</label>
+                <input type="text" class="form-control" name="colores" required>
+            </div>
+            <button type="submit" class="btn btn-success">Guardar Equipo</button>
+            <a href="{% url 'ver_equipos' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

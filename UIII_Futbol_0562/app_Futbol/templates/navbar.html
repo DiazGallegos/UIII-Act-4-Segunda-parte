@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'inicio_futbol' %}">
+            ⚽ Sistema de Fútbol
+        </a>
+        
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="{% url 'inicio_futbol' %}">
+                🏠 Inicio
+            </a>
+            
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    👥 Equipos
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'agregar_equipo' %}">Agregar Equipo</a></li>
+                    <li><a class="dropdown-item" href="{% url 'ver_equipos' %}">Ver Equipos</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    👤 Jugadores
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'agregar_jugador' %}">Agregar Jugador</a></li>
+                    <li><a class="dropdown-item" href="{% url 'ver_jugadores' %}">Ver Jugadores</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    🏆 Partidos
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Agregar Partido</a></li>
+                    <li><a class="dropdown-item" href="#">Ver Partidos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
